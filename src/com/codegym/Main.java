@@ -24,7 +24,7 @@ public class Main {
             switch (choise) {
                 case 1:
                     System.out.println("Danh sách sinh viên");
-                    manageSV.read();
+                    manageSV.show();
                     break;
                 case 2:
                     System.out.println("Nhập mã sinh viên: ");

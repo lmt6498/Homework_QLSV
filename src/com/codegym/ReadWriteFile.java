@@ -10,6 +10,7 @@ public class ReadWriteFile {
             FileOutputStream fos = new FileOutputStream(path,false);
             ObjectOutputStream oos = new ObjectOutputStream(fos);
             oos.writeObject(products);
+            System.out.println();
             oos.close();
         } catch (IOException e){
             e.printStackTrace();
@@ -21,7 +22,9 @@ public class ReadWriteFile {
             FileInputStream fis = new FileInputStream(path);
             ObjectInputStream ois = new ObjectInputStream(fis);
             sinhVien = (ArrayList<SinhVien>) ois.readObject();
-            System.out.println(sinhVien);
+            for (SinhVien s:sinhVien) {
+                s.display();
+            }
             ois.close();
         } catch (Exception ex){
             ex.printStackTrace();
