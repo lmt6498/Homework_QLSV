@@ -1,13 +1,18 @@
 package com.codegym;
 
+import java.io.IOException;
 import java.util.Collections;
 import java.util.List;
 import java.util.Scanner;
 
 public class Manage {
-    List<SinhVien> sinhVien = ReadWriteFile.readDataFromFile("E:\\JavaProject\\Homework_QLSV\\src\\DanhSachSV.csv");
+//    List<SinhVien> sinhVien = ReadWriteFile.readDataFromFile("E:\\JavaProject\\Homework_QLSV\\src\\DanhSachSV.csv");
+    List<SinhVien> sinhVien = read();
     static Scanner sc = new Scanner(System.in);
     static SortSV sortSV = new SortSV();
+
+    public Manage() throws IOException {
+    }
 
     public void show() {
         for (SinhVien s : sinhVien) {
@@ -46,25 +51,36 @@ public class Manage {
 //        ReadWriteFile.writeToFile("src/DanhSachSV.csv", sinhVien);
     }
 
-    public void deleteSV() {
+    public void deleteSV() throws IOException {
         System.out.println("Nhập tên sv cần xóa: ");
         String tenSV = sc.nextLine();
         sinhVien.removeIf(x -> x.getHoTenSV().equals(tenSV));
 //        ReadWriteFile.writeToFile("src/DanhSachSV.csv", sinhVien);
+        ReadWriteFileText.writeFile("src/DSSV.csv",sinhVien);
     }
 
     public void sortSV() {
         Collections.sort(sinhVien, sortSV);
     }
 
-    public void read(){
-        ReadWriteFile.readDataFromFile("src/DanhSachSV.csv");
-        System.out.println();
+//    public void read(){
+//        ReadWriteFile.readDataFromFile("src/DanhSachSV.csv");
+//        System.out.println();
+//    }
+//
+//    public void write(){
+//        ReadWriteFile.writeToFile("src/DanhSachSV.csv", sinhVien);
+//        System.out.println();
+//    }
+
+    public List<SinhVien> read() throws IOException {
+        sinhVien = ReadWriteFileText.readFile("src/DSSV.csv");
+        show();
+        return sinhVien;
     }
 
-    public void write(){
-        ReadWriteFile.writeToFile("src/DanhSachSV.csv", sinhVien);
-        System.out.println();
+    public void write() throws IOException {
+        ReadWriteFileText.writeFile("src/DSSV.csv",sinhVien);
     }
 
 

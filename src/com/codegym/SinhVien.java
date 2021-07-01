@@ -92,4 +92,7 @@ public class SinhVien implements Serializable {
                 ", diemTB=" + getDiemTB() +
                 '}');
     }
+    public String write() {
+        return maSV + "," + hoTenSV + "," + tuoiSV + "," + gioiTinh+ "," + diaChi+ "," + diemTB;
+    }
 }
